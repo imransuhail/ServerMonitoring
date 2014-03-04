@@ -77,13 +77,46 @@ body{background-color:lightgray;font-family: sans-serif;}
 
 	<div id="serverstats">
 	<div id="statslist">
-      <div id="statsrow">    <img src="img/ram.png"/><span>Memory</span><span>75%</span></div>
-      <div id="statsrow">    <img src="img/cpu.png"/><span>CPU   </span><span>89%</span></div>
-      <div id="statsrowlast"><img src="img/disk.png"/><span>Disk  </span><span>1024/2048</span></div>
+      <div id="statsrow">    <img src="ram.png"/><span>Memory</span><span  id="memory">75%</span></div>
+      <div id="statsrow">    <img src="cpu.png"/><span>CPU   </span><span  id="cpu">89%</span></div>
+      <div id="statsrowlast"><img src="disk.png"/><span>Disk  </span><span id="disk">1024/2048</span></div>
    </div>
 	</div>
 </div>
 
+<script>
+
+var serverData = {
+    "totalMemory": 8000,
+    "freeMemory": 2000,
+    "cpuUsage": "65",
+    "totalDiskSpace": 4000,
+    "freeDiskSpace": 1000
+};
+
+function showStats()
+{
+	var stats = getStats();
+	//alert(stats);
+	var memory 	= ""+stats.freeMemory+"/"+stats.totalMemory+" (Free/Total)";
+	var cpu 	= ""+stats.cpuUsage+"%"; 
+	var disk	= ""+stats.freeDiskSpace+"GB/"+stats.totalDiskSpace+"GB (Free/Total)";
+	//alert(memory);alert(cpu);alert(disk);
+	document.getElementById("memory").innerHTML=memory;
+	document.getElementById("cpu").innerHTML=cpu;
+	document.getElementById("disk").innerHTML=disk;
+	
+}
+
+function getStats()
+{
+	//Will put real code here later
+	return serverData;
+}
+
+showStats();
+
+</script>
 
 </body>
 
